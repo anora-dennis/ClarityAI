@@ -10,7 +10,7 @@ import pygame
 
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key = "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"
+    api_key = ""
 )
 
 MODEL_NAME = "deepseek/deepseek-r1-distill-llama-70b:free"
