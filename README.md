@@ -1,10 +1,10 @@
-# Therapist Bot
+# 🧠 Therapist Bot
 
 Therapist Bot is an AI-powered, voice-based chatbot that listens to user speech, analyzes sentiment, and responds empathetically. It creates an interactive therapy-like experience using natural language understanding and text-to-speech technology.
 
 ---
 
-## Features
+## ✨ Features
 - **Real-time speech recognition** using `speech_recognition`.
 - **Sentiment analysis** of user speech using `transformers` and CardiffNLP's RoBERTa model.
 - **AI-generated empathetic responses** via the Deepseek LLaMA model on OpenRouter/OpenAI API.
@@ -13,7 +13,7 @@ Therapist Bot is an AI-powered, voice-based chatbot that listens to user speech,
 
 ---
 
-## Skills & Technologies Used
+## 🛠️ Skills & Technologies Used
 - **Python programming**
 - **Speech recognition & audio processing** (`speech_recognition`, `pygame`)
 - **Natural Language Processing (NLP)** (`transformers`, sentiment classification)
@@ -24,7 +24,7 @@ Therapist Bot is an AI-powered, voice-based chatbot that listens to user speech,
 
 ---
 
-## Lessons Learned
+## 📚 Lessons Learned
 - How to integrate **speech-to-text** and **text-to-speech** in Python.
 - Sentiment analysis challenges and the importance of **confidence thresholds**.
 - How to structure **prompts for an LLM** to produce empathetic, human-like responses.
@@ -33,7 +33,7 @@ Therapist Bot is an AI-powered, voice-based chatbot that listens to user speech,
 
 ---
 
-## Future Improvements / Features to Add
+## 🚀 Future Improvements / Features to Add
 - Add **conversation history** to make responses more context-aware.
 - Improve **speech recognition accuracy** with noise reduction techniques.
 - Allow users to **choose voice types or languages** for TTS.
@@ -44,7 +44,7 @@ Therapist Bot is an AI-powered, voice-based chatbot that listens to user speech,
 
 ---
 
-## Requirements
+## 📝 Requirements
 - Python 3.10+
 - Install dependencies:
 
