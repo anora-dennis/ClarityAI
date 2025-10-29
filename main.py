@@ -1,3 +1,4 @@
+# Import all libraries/modules
 import re
 import speech_recognition as sr
 from gtts import gTTS
@@ -8,12 +9,13 @@ import os
 import pygame
 
 
+
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key = ""
+    api_key = "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"
 )
 
-MODEL_NAME = "deepseek/deepseek-r1-distill-llama-70b:free"
+MODEL_NAME = "deepseek/deepseek-r1:free"
 
 
 def speak(text):
@@ -66,7 +68,7 @@ def get_llm_reply(user_text, sentiment):
     prompt = f"""
 The user said: "{user_text}".
 They are {sentiment_mapping[sentiment]}.
-Respond as a compassionate therapist in a descriptive, empathetic, and supportive way.
+Respond as a compassionate therapist in a empathetic, and supportive way. Don't use metaphors, and speak in an easy to understand way. Keep it short, max 1-2 sentences.
 """
 
     completion = client.chat.completions.create(
