@@ -8,14 +8,12 @@ from openai import OpenAI
 import os
 import pygame
 
-
-
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key = "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"
+    api_key = "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"
 )
 
-MODEL_NAME = "deepseek/deepseek-r1:free"
+MODEL_NAME = "google/gemini-2.0-flash-exp:free"
 
 
 def speak(text):
@@ -78,22 +76,33 @@ Respond as a compassionate therapist in a empathetic, and supportive way. Don't 
 
     return completion.choices[0].message.content
 
-def get_user_speech():
-    r = sr.Recognizer()
-    with sr.Microphone() as source:
-        r.adjust_for_ambient_noise(source, duration=1)
-        print("Go ahead...")
-        audio = r.listen(source)
-        try:
-            user_text = r.recognize_google(audio)
-            print("You said:", user_text)
-            return user_text
-        except sr.UnknownValueError:
-            print("Could not understand audio")
-            return ""
-        except sr.RequestError as e:
-            print(f"Speech Recognition error: {e}")
-            return ""
+def get_llm_reply(user_text, sentiment):
+    sentiment_mapping = {
+        "Negative": "feeling sad or upset",
+        "Neutral": "feeling okay or neutral",
+        "Positive": "feeling happy or content"
+    }
+
+    prompt = f"""
+The user said: "{user_text}".
+They are {sentiment_mapping[sentiment]}.
+Respond as a compassionate therapist in an empathetic, and supportive way. 
+Don't use metaphors, and speak in an easy to understand way. Keep it short, max 2-3 sentences.
+"""
+
+    try:
+        completion = client.chat.completions.create(
+            model=MODEL_NAME,
+            messages=[{"role": "user", "content": prompt}]
+        )
+        return completion.choices[0].message.content
+
+    except Exception as e:
+        if "429" in str(e):
+            return "I'm really sorry, but I'm getting too many requests right now. Could you please try again in a moment?"
+        else:
+            return f"Something went wrong: {e}"
+
 
 
 def run_therapist_bot():
@@ -112,4 +121,5 @@ def run_therapist_bot():
 
 
 
-run_therapist_bot()
+if __name__ == "__main__":
+    run_therapist_bot()
