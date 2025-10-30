@@ -10,7 +10,7 @@ import pygame
 
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key = "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"
+    api_key = ""
 )
 
 MODEL_NAME = "google/gemini-2.0-flash-exp:free"
